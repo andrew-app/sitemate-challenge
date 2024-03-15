@@ -1,0 +1,26 @@
+---
+version: '3'
+
+services:
+  user-db:
+    image: 'postgres:latest'
+    hostname: postgres
+    container_name: issues-db
+    ports:
+      - 5432:5432
+    command: "postgres -c wal_level=logical"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST_AUTH_METHOD: trust
+  issues-service:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    hostname: user-service
+    container_name: user-service
+    depends_on:
+      - user-db
+    ports:
+      - 8080:8080
+    environment:
+      API_URL: host.docker.internal
