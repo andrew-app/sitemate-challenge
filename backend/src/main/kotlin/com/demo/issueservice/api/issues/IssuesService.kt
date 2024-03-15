@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 class IssuesService(
     private val issueRepository: IssueRepository,
 ) {
-    fun findUsers(): List<IssueDto> {
+    fun findIssues(): List<IssueDto> {
         return issueRepository.findAllIssues().map {
             issue ->
             IssueDto(

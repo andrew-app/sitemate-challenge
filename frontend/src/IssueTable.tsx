@@ -47,14 +47,14 @@ const IssueTable = () => {
       getPaginationRowModel: getPaginationRowModel(),
     });
 
-    const userError = error as Error;
+    const issueError = error as Error;
 
     if (status === 'loading') {
         return <CircularProgress size={100} color="primary" />
       }
     
     if (status === 'error') {
-        return <Alert severity="error">Something went wrong: {userError.message}</Alert>
+        return <Alert severity="error">Something went wrong: {issueError.message}</Alert>
     }
 
     return (
@@ -66,7 +66,7 @@ const IssueTable = () => {
         <Box sx={{ border: 1, borderColor: "#8b499b", borderRadius: '5px' }}>
         <TableContainer>
         <Table sx={{ minWidth: 1024}} 
-        aria-label="user table">
+        aria-label="issue table">
           <TableHead sx={
             {
               backgroundColor: '#8b499b',

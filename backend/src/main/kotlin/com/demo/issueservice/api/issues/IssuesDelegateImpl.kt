@@ -12,6 +12,6 @@ class IssuesDelegateImpl(
     val issuesService: IssuesService
 ): DefaultDelegate {
     override fun issuesGet(): ResponseEntity<IssuesGet200Response> {
-        return ResponseEntity(IssuesGet200Response(issuesService.findUsers()), HttpStatus.OK)
+        return ResponseEntity(IssuesGet200Response(issuesService.findIssues()), HttpStatus.OK)
     }
 }
